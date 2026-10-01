@@ -1,0 +1,38 @@
+flowchart LR
+
+  subgraph FUENTE["1. Fuente de eventos"]
+    direction TB
+    P["producer.py<br/>sintetico o replay<br/>inyecta duplicados,<br/>tardios e invalidos"]
+  end
+
+  subgraph KAFKA["2. Apache Kafka (KRaft)"]
+    direction TB
+    TRAW["ventas.raw<br/>6 particiones<br/>clave: tienda_id<br/>retencion 7 dias"]
+    TTOT["ventas.totales<br/>6 particiones<br/>compactado (upsert)<br/>clave: tienda_id|window_start"]
+    TINV["ventas.invalidos<br/>3 particiones<br/>dead-letter"]
+  end
+
+  subgraph BEAM["3. Apache Beam (DirectRunner)"]
+    direction TB
+    R["ReadFromKafka (KafkaIO)"]
+    V["Parsear y validar<br/>salida lateral a invalidos"]
+    T["Anclar tiempo de evento"]
+    W["Ventana fija 60s<br/>watermark + lateness 120s<br/>triggers early/on-time/late<br/>ACCUMULATING"]
+    D["Deduplicar por event_id<br/>estado por clave + timer"]
+    A["CombinePerKey<br/>SumaMontos (total, cantidad)"]
+    WR["WriteToKafka (KafkaIO)"]
+  end
+
+  subgraph SALIDA["4. Salida"]
+    direction TB
+    C["consumer.py<br/>materializa upsert<br/>ultimo pane por ventana"]
+  end
+
+  P -->|"producir"| TRAW
+  TRAW --> R
+  R --> V
+  V -->|"validos"| T
+  V -->|"invalidos"| TINV
+  T --> W --> D --> A --> WR
+  WR --> TTOT
+  TTOT --> C

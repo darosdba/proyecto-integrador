@@ -1,0 +1,10 @@
+{"event_id":"evt-005","schema_version":"1.0","tienda_id":"T-002","caja_id":"T-002-C01","event_time":"2026-07-24T13:00:15Z","monto":200000,"medio_pago":"tarjeta_credito","estado":"CONFIRMADA"}
+{"event_id":"evt-001","schema_version":"1.0","tienda_id":"T-014","caja_id":"T-014-C03","event_time":"2026-07-24T13:00:10Z","monto":120000,"medio_pago":"tarjeta_debito","estado":"CONFIRMADA"}
+{"event_id":"evt-002","schema_version":"1.0","tienda_id":"T-014","caja_id":"T-014-C01","event_time":"2026-07-24T13:00:40Z","monto":80000,"medio_pago":"efectivo","estado":"CONFIRMADA"}
+{"event_id":"evt-004","schema_version":"1.0","tienda_id":"T-014","caja_id":"T-014-C02","event_time":"2026-07-24T13:00:30Z","monto":999000,"medio_pago":"qr","estado":"PENDIENTE"}
+{"event_id":"evt-003","schema_version":"1.0","tienda_id":"T-014","caja_id":"T-014-C03","event_time":"2026-07-24T13:00:20Z","monto":50000,"medio_pago":"efectivo","estado":"CONFIRMADA"}
+{"event_id":"evt-002","schema_version":"1.0","tienda_id":"T-014","caja_id":"T-014-C01","event_time":"2026-07-24T13:00:41Z","monto":80000,"medio_pago":"efectivo","estado":"CONFIRMADA"}
+{"event_id":"evt-006","schema_version":"1.0","tienda_id":"T-014","caja_id":"T-014-C02","event_time":"2026-07-24T13:01:05Z","monto":90000,"medio_pago":"tarjeta_credito","estado":"CONFIRMADA"}
+{"event_id":"evt-009","schema_version":"1.0","tienda_id":"T-014","caja_id":"T-014-C02","event_time":"2026-07-24T13:01:30Z","monto":40000,"medio_pago":"tarjeta_credito","estado":"ANULADA"}
+{"event_id":"evt-010","schema_version":"1.0","tienda_id":"T-014","caja_id":"T-014-C04","event_time":"2026-07-24T13:01:10Z","estado":"CONFIRMADA"}
+{"event_id":"evt-007","schema_version":"1.0","tienda_id":"T-014","caja_id":"T-014-C03","event_time":"2026-07-24T13:01:45Z","monto":30000,"medio_pago":"qr","estado":"CONFIRMADA"}
